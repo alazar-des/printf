@@ -29,6 +29,8 @@ size_t write_string(char *s, size_t *count, struct WriteBuffer *ptrbuffer)
 	char *str;
 
 	str = s;
+	if (str == NULL)
+		return (*count);
 	while (*str != '\0')
 	{
 		write_or_buffer(ptrbuffer, *str);
@@ -37,7 +39,6 @@ size_t write_string(char *s, size_t *count, struct WriteBuffer *ptrbuffer)
 	}
 	return (*count);
 }
-
 
 /**
  * write_integer - write or put an integer into to standard out or buffer
@@ -54,8 +55,8 @@ size_t write_integer(int n, size_t *count, struct WriteBuffer *ptrbuffer)
 	{
 		n = -n;
 		c = '-';
-		write(1, &c, 1);
-		count++;
+		write_or_buffer(ptrbuffer, c);
+		(*count)++;
 	}
 	if (n / 10)
 		write_integer(n / 10, count, ptrbuffer);
@@ -210,4 +211,20 @@ size_t write_xhex(unsigned int n, size_t *count, struct WriteBuffer *ptrbuffer)
 	}
 	write_or_buffer(ptrbuffer, h);
 	return(++(*count));
+}
+
+int write_address(void *add, size_t *count, struct WriteBuffer *ptrbuffer)
+{
+	char *c;
+	int i;
+
+	c = (char *) add;
+	for (i = 0; i < 4; i++)
+	{
+		_printf("\n----------\nwrite_address\n");
+		write_or_buffer(ptrbuffer, *c);
+		c++;
+	}
+	(*count) += 7;
+	return (*count);
 }

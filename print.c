@@ -15,6 +15,8 @@ int _printf(const char *format, ...)
 
 	va_start(arg, format);
 	buffer.index = 0;
+	if (format == NULL)
+		return (0);
 	while (*format)
 	{
 		if (*format == '\\')
@@ -23,7 +25,7 @@ int _printf(const char *format, ...)
 			counter++;
 			format += 2;
 			continue;
-		}
+			}
 		if (*format != '%')
 		{
 			write_or_buffer(&buffer, *format);

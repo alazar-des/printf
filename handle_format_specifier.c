@@ -23,43 +23,36 @@ size_t handle_format_specifier(const char *format, struct WriteBuffer *ptrbuffer
 		break;
 	case 's':
 		count = write_string(va_arg(*arg, char *), &count, ptrbuffer);
-		format++;
 		break;
 	case 'd':
 		count = write_integer(va_arg(*arg, int), &count, ptrbuffer);
-		format++;
 		break;
 	case 'i':
 		count = write_integer(va_arg(*arg, int), &count, ptrbuffer);
-		format++;
 		break;
 	case 'b':
 		count = write_binary(va_arg(*arg, int), &count, ptrbuffer);
-		format++;
 		break;
 	case 'u':
 		count = write_unsigned(va_arg(*arg, int), &count, ptrbuffer);
-		format++;
 		break;
 	case 'o':
 		count = write_octal(va_arg(*arg, int), &count, ptrbuffer);
-		format++;
 		break;
 	case 'x':
 		count = write_xhex(va_arg(*arg, int), &count, ptrbuffer);
-		format++;
 		break;
 	case 'X':
 		count = write_Xhex(va_arg(*arg, int), &count, ptrbuffer);
-		format++;
 		break;
 	case '%':
-		write_or_buffer(ptrbuffer, '%');
+		write_or_buffer(ptrbuffer, *format);
 		count++;
-		format++;
 		break;
 	default:
-		format++;
+		write_or_buffer(ptrbuffer, '%');
+		write_or_buffer(ptrbuffer, *format);
+		count += 2;
 	}
 	return (count);
 }
