@@ -1,5 +1,5 @@
 #include "holberton.h"
-
+#include <stdio.h>
 /**
  * _printf - the function a user called to print anything
  * @format: foramt specifier or string just like printf
@@ -12,11 +12,15 @@ int _printf(const char *format, ...)
 	va_list  arg;
 	int counter = 0;
        	struct WriteBuffer buffer;
+	char *p = "(null)";
 
 	va_start(arg, format);
 	buffer.index = 0;
 	if (format == NULL)
-		return (0);
+	{
+		_printf("%s\n", p);
+		return (7);
+	}
 	while (*format)
 	{
 		if (*format == '\\')
