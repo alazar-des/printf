@@ -32,6 +32,7 @@ int _printf(const char *format, ...)
 			continue;
 		}
 		counter += handle_format_specifier(format, &buffer, &arg);
+		format += 2;
 	}
 	write(1, buffer.bufferArr, buffer.index);
 	return (counter);
