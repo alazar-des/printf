@@ -41,6 +41,6 @@ void handle_special_char(const char *format, struct WriteBuffer *ptrbuffer)
 		write_or_buffer(ptrbuffer, '%');
 		break;
 	default:
-		write(1, '\c', 1);
+		write(1, format, 1);
 	}
 }
