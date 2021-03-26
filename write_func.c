@@ -1,4 +1,5 @@
 #include "holberton.h"
+#include <stdlib.h>
 
 /**
  * write_char - write or put into buffer a standard character
@@ -53,14 +54,15 @@ size_t write_integer(int n, size_t *count, struct WriteBuffer *ptrbuffer)
 
 	if (n < 0)
 	{
-		n = -n;
 		c = '-';
 		write_or_buffer(ptrbuffer, c);
 		(*count)++;
 	}
 	if (n / 10)
-		write_integer(n / 10, count, ptrbuffer);
-	n %= 10;
+	{
+		write_integer(abs(n / 10), count, ptrbuffer);
+	}
+	n = abs(n % 10);
 	c = n + '0';
 	write_or_buffer(ptrbuffer, c);
 	return(++(*count));
