@@ -23,13 +23,6 @@ int _printf(const char *format, ...)
 	}
 	while (*format)
 	{
-		if (*format == '\\')
-		{
-			handle_special_char(format, &buffer);
-			counter++;
-			format += 2;
-			continue;
-			}
 		if (*format != '%')
 		{
 			write_or_buffer(&buffer, *format);
