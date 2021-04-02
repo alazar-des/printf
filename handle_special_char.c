@@ -34,9 +34,6 @@ void handle_special_char(const char *format, struct WriteBuffer *ptrbuffer)
 	case 'v':
 		write_or_buffer(ptrbuffer, '\v');
 		break;
-	case '\\':
-		write_or_buffer(ptrbuffer, '\\');
-		break;
 	case '%':
 		write_or_buffer(ptrbuffer, '%');
 		break;
