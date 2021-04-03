@@ -1,33 +1,36 @@
-NAME
+.\" Man page for _printf.
+
+.TH man _printf "2 April 2021" "1.0" "_printf man page"
+.SH NAME
 
 _printf
 
-SYNOPSIS
+.SH SYNOPSIS
 
 #include <stdio.h>
 int _printf(const char *format, ...);
 
-DESCRIPTION
+.SH DESCRIPTION
 
 The functions in the _printf() function produces output according to a format._printf() functions  write output to the given output stream.
 
-EXAMPLES
+.SH EXAMPLES
  To print a date and time in the form ``Sunday, July 3, 10:02'', where
      weekday and month are pointers to strings:
 
            #include <stdio.h>
            _printf("%s, %s %d, %.2d:%.2d\n",
                    weekday, month, day, hour, min);
-SEE ALSO
+.SH SEE ALSO
        printf(3)
 
        Full documentation at: <https://www.gnu.org/software/coreutils/printf>
        or available locally via: info '(coreutils) printf invocation'
 
-AUTHOR
+.SH AUTHOR
 	Written by Murage Brendan and Alazar Gebrekirstos.
 
-COPYRIGHT
+.SH COPYRIGHT
   Copyright 2021 Alazar and Murage, Alx.
   There is NO WARRANTY, to the extent permitted by law.
   This is an attempt a man page to a custonm _printf().
